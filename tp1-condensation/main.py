@@ -22,7 +22,7 @@ for ligne in inputFile:
 	i += 1				# Compter les sommets
 
 	split1 = ligne.split(":")	
-	key = split1[0]
+	key = int(split1[0])
 	numero = split1[2]
 
 	split2 = split1[1].split("|")
@@ -38,13 +38,7 @@ for ligne in inputFile:
 
 for ligne in inputFile:
 	splited = ligne.split("->")
-	digraph.add_edge(int(splited[0]), int(splited[1]))	
+	digraph.add_edge(nodes[int(splited[0])], nodes[int(splited[1])])	
 
 inputFile.close()
 
-graph = pydot.Dot(graph_type='digraph')
-
-for node in digraph.nodes():
-	graph.add_node(pydot.Node(str(node)))
-for edge in digraph.edges():
-	graph.add_edge(pydot.Edge(edge[0], edge[1]))
