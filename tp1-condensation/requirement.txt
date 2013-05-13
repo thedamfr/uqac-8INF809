@@ -1,0 +1,5 @@
+distribute==0.6.38
+networkx==1.7
+pydot==1.0.28
+pyparsing==1.5.7
+wsgiref==0.1.2
