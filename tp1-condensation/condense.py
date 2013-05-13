@@ -1,4 +1,6 @@
+
 import networkx as nx
+from collections import namedtuple
 
 def execute_digraph(digraph, partitions, nodes):
 	reverse_partition = {}
@@ -27,3 +29,38 @@ def execute_digraph(digraph, partitions, nodes):
 				condensed_digraph.add_edge(to_string(partitions[reverse_partition[key]]), to_string(partitions[reverse_partition[successor.cle]]))
 
 	return condensed_digraph
+
+
+def execute_disjoinSet(disjointSet, digraph):
+    """
+    Construit le graphe condensé à partir des disjointSets
+    """
+    condensed_digraph = nx.DiGraph()
+
+    dicoNodeForRootElem = {}
+
+    # On rassemble les set sous formes de listes
+    for set in disjointSet.values():
+        p = set.find()
+        if dicoNodeForRootElem.get(p) == None:
+            dicoNodeForRootElem[p] = []
+        dicoNodeForRootElem[p].append(set.data)
+
+    print (dicoNodeForRootElem)
+
+    # On transforme les listes en tuples
+    for key in dicoNodeForRootElem.keys():
+        tup = tuple(dicoNodeForRootElem[key])
+        condensed_digraph.add_node(tup)
+        dicoNodeForRootElem[key] = tup
+
+    # On transposes les edges
+    for node in disjointSet.keys():
+        for successor in digraph.successors(node):
+            condensed_digraph.add_edge(dicoNodeForRootElem[disjointSet[node].find()], dicoNodeForRootElem[disjointSet[successor].find()])
+
+    return condensed_digraph
+
+
+
+

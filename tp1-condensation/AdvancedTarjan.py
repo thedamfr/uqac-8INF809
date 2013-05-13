@@ -3,6 +3,9 @@ import tarjan as super
 import disjoin_set as ds
 
 class AdvancedTarjan(super.Tarjan):
+    """
+    Implémentation de Tarjan avec des DisjoinSet
+    """
 
     def init(self):
         self.num = 0
