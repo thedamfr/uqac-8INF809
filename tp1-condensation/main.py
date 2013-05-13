@@ -48,3 +48,13 @@ partition = tarjan.execute(digraph)
 
 #Construire le graphe condense
 condense = condense.execute(digraph, partition, nodes)
+
+graphviz = pydot.Dot(graph_type='digraph')
+
+for n in condense.nodes():
+	graphviz.add_node(pydot.Node(str(n)))
+
+for e in condense.edges():
+	graphviz.add_edge(pydot.Edge(pydot.Node(str(e[0])), pydot.Node(str(e[1]))))
+
+graphviz.write_png('condensed_graph.png')

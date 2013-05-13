@@ -5,11 +5,12 @@ def execute(digraph, partitions, nodes):
 	
 	def to_string(partition):
 		string = ""
-		first = False
+		first = True
 		for elem in partition:
 			if not first: string += ", "
-			else: first = True
+			else: first = False
 			string += elem.mot
+		return string
 				
 
 	condensed_digraph = nx.DiGraph()
@@ -19,8 +20,10 @@ def execute(digraph, partitions, nodes):
 		for word in partitions[i]:
 			reverse_partition[word.cle] = i
 	
-	print len(reverse_partition)	
 
 	for key in reverse_partition.keys():
 		for successor in digraph.successors(nodes[key]):
-			condensed_digraph.add_edge(to_string(partitions[reverse_partition[key]]), to_string(partitions[reverse_partition[successor.cle]]))
+			if reverse_partition[key] != reverse_partition[successor.cle]:
+				condensed_digraph.add_edge(to_string(partitions[reverse_partition[key]]), to_string(partitions[reverse_partition[successor.cle]]))
+
+	return condensed_digraph
