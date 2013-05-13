@@ -1,6 +1,6 @@
 import networkx as nx
 
-def execute(digraph, partitions, nodes):
+def execute_digraph(digraph, partitions, nodes):
 	reverse_partition = {}
 	
 	def to_string(partition):

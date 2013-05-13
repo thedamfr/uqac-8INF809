@@ -44,10 +44,10 @@ for ligne in inputFile:
 inputFile.close()
 
 #Appliquer l'algorithme tarjan
-partition = tarjan.execute(digraph)
+partition = tarjan.execute_digraph(digraph)
 
 #Construire le graphe condense
-condense = condense.execute(digraph, partition, nodes)
+condense = condense.execute_digraph(digraph, partition, nodes)
 
 graphviz = pydot.Dot(graph_type='digraph')
 

@@ -1,6 +1,6 @@
 import networkx as nx
 
-def execute(G):
+def execute_digraph(G):
 #	verbose = True
 	num = 0
 	stack = []
