@@ -2,7 +2,7 @@ from collections import namedtuple
 import networkx as nx
 import pydot
 import tarjan
-
+import condense
 
 inputFile = open("graphe.dig", "r")
 
@@ -46,5 +46,5 @@ inputFile.close()
 #Appliquer l'algorithme tarjan
 partition = tarjan.execute(digraph)
 
-#Construire le graphe condensé
-condense
+#Construire le graphe condense
+condense = condense.execute(digraph, partition, nodes)
