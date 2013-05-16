@@ -5,9 +5,41 @@ import networkx as nx
 import tarjan
 import mot as m
 import graphviz as gv
+import sys
+import sys, getopt
 
 nodes = {}
 digraph = nx.DiGraph()
+
+inputFile='graphe.dig'
+outputFile='condensed_graph.png'
+
+# Cli
+
+###############################
+# o == option
+# a == argument passed to the o
+###############################
+# Cache an error with try..except
+# Note: options is the string of option letters that the script wants to recognize, with
+# options that require an argument followed by a colon (':') i.e. -i fileName
+#
+try:
+    myopts, args = getopt.getopt(sys.argv[1:],"i:o:")
+except getopt.GetoptError as e:
+    print (str(e))
+    print("Usage: %s -i input -o output" % sys.argv[0])
+    sys.exit(2)
+
+for o, a in myopts:
+    if o == '-i':
+        inputFile=a
+    elif o == '-o':
+        outputFile=a
+
+# Display input and output file name passed as the args
+print ("Input file : %s and output file: %s" % (inputFile,outputFile) )
+
 
 # Fonctions
 
@@ -49,7 +81,7 @@ def readInput(path="graphe.dig"):
     inputFile.close()
 
 #Lire le fichier
-readInput()
+readInput(inputFile)
 
 #Appliquer l'algorithme tarjan
 partition = tarjan.Tarjan(digraph).execute()
@@ -59,4 +91,4 @@ gv.makeDisjoinsetGraph(partition_set)
 #Construire le graphe condense
 condensedFromSet = condense.execute_disjoinSet(partition_set, digraph)
 
-gv.printCondensedGraph(condensedFromSet)
+gv.printCondensedGraph(condensedFromSet,outputFile)

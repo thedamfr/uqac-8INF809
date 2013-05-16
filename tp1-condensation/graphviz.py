@@ -25,7 +25,7 @@ def tupleToString(tuple):
         string += " and " + str(len(tuple)-1) + " others"
     return string
 
-def printCondensedGraph(condensedFromSet):
+def printCondensedGraph(condensedFromSet, outputFile):
     graphviz = pydot.Dot(graph_type='digraph')
     graphviz_nodes = {}
 
@@ -38,4 +38,4 @@ def printCondensedGraph(condensedFromSet):
     for e in condensedFromSet.edges():
         graphviz.add_edge(pydot.Edge(graphviz_nodes[e[0]], graphviz_nodes[e[1]]))
 
-    graphviz.write_png('condensed_graph.png')
+    graphviz.write_png(outputFile)
