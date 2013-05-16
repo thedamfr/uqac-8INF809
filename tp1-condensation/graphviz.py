@@ -25,12 +25,22 @@ def tupleToString(tuple):
         string += " and " + str(len(tuple)-1) + " others"
     return string
 
+def getColor(tuple):
+    if len(tuple) == 1:
+        return "green"
+    elif len(tuple) > 10:
+        return "red"
+    elif len(tuple) > 2:
+        return "yellow"
+    elif len(tuple) > 1:
+        return "lightblue"
+
 def printCondensedGraph(condensedFromSet, outputFile):
     graphviz = pydot.Dot(graph_type='digraph')
     graphviz_nodes = {}
 
     for n in condensedFromSet.nodes():
-        print_node = pydot.Node(tupleToString(n))
+        print_node = pydot.Node(tupleToString(n), style="filled", fillcolor=getColor(n))
         graphviz.add_node(print_node)
         graphviz_nodes[n] = print_node
 
