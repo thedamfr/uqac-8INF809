@@ -2,7 +2,7 @@ import networkx as nx
 
 class Tarjan:
     """
-    Implémentation classique de Tarjan
+    Implementation classique de Tarjan
     """
     def __init__(self, G):
         self.G = G

@@ -33,7 +33,7 @@ def execute_digraph(digraph, partitions, nodes):
 
 def execute_disjoinSet(disjointSet, digraph):
     """
-    Construit le graphe condensé à partir des disjointSets
+    Construit le graphe condense a partir des disjointSets
     """
     condensed_digraph = nx.DiGraph()
 
@@ -46,7 +46,6 @@ def execute_disjoinSet(disjointSet, digraph):
             dicoNodeForRootElem[p] = []
         dicoNodeForRootElem[p].append(set.data)
 
-    print (dicoNodeForRootElem)
 
     # On transforme les listes en tuples
     for key in dicoNodeForRootElem.keys():

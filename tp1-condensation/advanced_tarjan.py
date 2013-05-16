@@ -4,7 +4,7 @@ import disjoin_set as ds
 
 class AdvancedTarjan(super.Tarjan):
     """
-    Implémentation de Tarjan avec des DisjoinSet
+    Implementation de Tarjan avec des DisjoinSet
     """
 
     def init(self):
