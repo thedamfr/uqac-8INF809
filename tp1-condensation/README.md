@@ -13,3 +13,8 @@ Use the requirement file
 
     $ pip install -r requirement.txt
     
+# Usage
+
+    $ python main.py -i inputFile -o outputFile
+
+inputFile has for default value 'graphe.dig' and outputFile's default is 'condensed_graph.png'
