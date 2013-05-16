@@ -56,7 +56,8 @@ def execute_disjoinSet(disjointSet, digraph):
     # On transposes les edges
     for node in disjointSet.keys():
         for successor in digraph.successors(node):
-            condensed_digraph.add_edge(dicoNodeForRootElem[disjointSet[node].find()], dicoNodeForRootElem[disjointSet[successor].find()])
+            if disjointSet[node].find() != disjointSet[successor].find():
+                condensed_digraph.add_edge(dicoNodeForRootElem[disjointSet[node].find()], dicoNodeForRootElem[disjointSet[successor].find()])
 
     return condensed_digraph
 
