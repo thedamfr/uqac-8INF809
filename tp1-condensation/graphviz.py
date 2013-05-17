@@ -22,7 +22,7 @@ def tupleToString(tuple):
             string += str(tuple[i])
 
     if len(tuple) > 10:
-        string += " and " + str(len(tuple)-1) + " others"
+        string += " and " + str(len(tuple)- len(tuple) % 10) + " others"
     return string
 
 def getColor(tuple):
