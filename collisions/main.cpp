@@ -859,27 +859,29 @@ void handleKeypress(unsigned char key, int x, int y) {
                 _balls.push_back(ball);
                 _octree->add(ball);
             }
-            Platform* platform = new Platform();
-            platform->center = Vec3f(8 * randomFloat() - 4,
-                    8 * randomFloat() - 4,
-                    8 * randomFloat() - 4);
-            platform->x = Vec3f(8 * randomFloat() - 4,
-                    8 * randomFloat() - 4,
-                    8 * randomFloat() - 4);
-            Vec3f noty = Vec3f(8 * randomFloat() - 4,
-                    8 * randomFloat() - 4,
-                    8 * randomFloat() - 4);
-            platform->y = noty.cross(platform->x);
-            platform->z = platform->y.cross(platform->x) * randomFloat();
-            platform->color = Vec3f(0.6f * randomFloat() + 0.2f,
-                    0.6f * randomFloat() + 0.2f,
-                    0.6f * randomFloat() + 0.2f);
-            platform->dims = Vec3f(0.1f * randomFloat() + 0.2f,
-                    0.1f * randomFloat() + 0.2f,
-                    0.1f * randomFloat() + 0.2f);
-            platform->radius = platform->dims.magnitude();
-            _platforms.push_back(platform);
-            _octree->add(platform);
+            for (int i = 0; i < 10; i++) {
+                Platform* platform = new Platform();
+                platform->center = Vec3f(8 * randomFloat() - 4,
+                        8 * randomFloat() - 4,
+                        8 * randomFloat() - 4);
+                platform->x = Vec3f(8 * randomFloat() - 4,
+                        8 * randomFloat() - 4,
+                        8 * randomFloat() - 4);
+                Vec3f noty = Vec3f(8 * randomFloat() - 4,
+                        8 * randomFloat() - 4,
+                        8 * randomFloat() - 4);
+                platform->y = noty.cross(platform->x);
+                platform->z = platform->y.cross(platform->x) * randomFloat();
+                platform->color = Vec3f(0.6f * randomFloat() + 0.2f,
+                        0.6f * randomFloat() + 0.2f,
+                        0.6f * randomFloat() + 0.2f);
+                platform->dims = Vec3f(0.1f * randomFloat() + 0.2f,
+                        0.1f * randomFloat() + 0.2f,
+                        0.1f * randomFloat() + 0.2f);
+                platform->radius = platform->dims.magnitude();
+                _platforms.push_back(platform);
+                _octree->add(platform);
+            }
             break;
 
 
